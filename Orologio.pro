@@ -9,15 +9,25 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Data.cpp \
+    CallBackTimer.cpp \
+    Modelli/Cronometro.cpp \
+    Modelli/Data.cpp \
     Modelli/Orario.cpp \
+    Modelli/Orologio.cpp \
+    Modelli/Timer.cpp \
+    Sveglia.cpp \
     main.cpp \
     MainWindow.cpp
 
 HEADERS += \
-    Data.h \
+    CallBackTimer.h \
+    Modelli/Cronometro.h \
+    Modelli/Data.h \
     MainWindow.h \
-    Modelli/Orario.h
+    Modelli/Orario.h \
+    Modelli/Orologio.h \
+    Modelli/Timer.h \
+    Sveglia.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
