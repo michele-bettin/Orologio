@@ -1,0 +1,178 @@
+MainWindow
+{
+    background-color: #2e2f30;
+    color: #f1f1f1;
+}
+
+/*
+    menu bar superiore
+*/
+QMenuBar
+{
+    background-color: #212222;
+    color: #f1f1f1;
+}
+
+QMenuBar::item
+{
+    padding: 4px 8px;
+    background-color: transparent;
+}
+
+QMenuBar::item:selected
+{
+    background-color: #f1f1f1;
+    color: #212222;
+}
+
+QMenuBar::item:pressed
+{
+    background-color: #f1f1f1;
+    color: #212222;
+}
+
+QMenu
+{
+    background-color: #f1f1f1;
+}
+
+QMenu::item
+{
+    color: #212222;
+}
+
+QMenu::item:selected
+{
+    background-color: #98a9ee;
+    color: #f1f1f1;
+}
+
+/*
+    scroll bar orizzontale
+*/
+QScrollBar:horizontal
+{
+    background: #404142;
+    height: 15px;
+    margin: 0px 20px 0 20px;
+}
+
+QScrollBar::handle:horizontal
+{
+    background: #f1f1f1;
+    min-width: 20px;
+}
+
+QScrollBar::add-line:horizontal
+{
+    background: #404142;
+    width: 20px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+
+QScrollBar::sub-line:horizontal
+{
+    background: #404142;
+    width: 20px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+
+QScrollBar:left-arrow:horizontal, QScrollBar::right-arrow:horizontal
+{
+    border: 2px solid grey;
+    width: 3px;
+    height: 3px;
+    background: #f1f1f1;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+{
+    background: none;
+}
+
+/*
+    pannello sinistro/menu
+*/
+#pannello-sinistro-menu
+{
+   background-color: #212222;
+}
+
+/*bottone menu*/
+#bottone-menu
+{
+    background-color: #212222;
+}
+
+#bottone-menu:hover
+{
+    background-color: #2e2f30;
+}
+
+#bottone-menu-testo
+{
+    color: #f1f1f1;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/*
+    pannello destro
+*/
+#scroll
+{
+    background-color: #2e2f30;
+    border: none;
+}
+
+#pannello-destro
+{
+    background-color: #2e2f30;
+}
+
+/*
+    info dialog
+*/
+#pannello-info
+{
+    background-color: #2e2f30;
+}
+
+#pannello-info QLabel
+{
+    color: #f1f1f1;
+}
+
+#pannello-info #logo
+{
+    padding: 20px 0;
+}
+
+#pannello-info #autori-titolo
+{
+    padding: 20px 0;
+    text-decoration: underline;
+    font-size: 20px;
+}
+
+#pannello-info #autore
+{
+    font-size: 15px;
+    padding: 0 0 5px 0;
+}
+
+/*
+    generale
+*/
+#titolo
+{
+    font-weight: 900;
+    font-size: 35px;
+    color: #f1f1f1;
+    padding: 10px 0 20px 0;
+}
+
+
+

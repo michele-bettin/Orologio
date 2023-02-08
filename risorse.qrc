@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Risorse/logo.png</file>
+        <file>Risorse/style.css</file>
+        <file>Risorse/add.png</file>
+        <file>Risorse/alarm.png</file>
+        <file>Risorse/alarm-black.png</file>
+        <file>Risorse/clock.png</file>
+        <file>Risorse/edit.png</file>
+        <file>Risorse/error.png</file>
+        <file>Risorse/error-black.png</file>
+        <file>Risorse/exit.png</file>
+        <file>Risorse/globe.png</file>
+        <file>Risorse/globe-black.png</file>
+        <file>Risorse/info.png</file>
+        <file>Risorse/location.png</file>
+        <file>Risorse/open.png</file>
+        <file>Risorse/pause.png</file>
+        <file>Risorse/play.png</file>
+        <file>Risorse/save.png</file>
+        <file>Risorse/settings.png</file>
+        <file>Risorse/settings-black.png</file>
+        <file>Risorse/star.png</file>
+        <file>Risorse/star-fill.png</file>
+        <file>Risorse/stop.png</file>
+        <file>Risorse/stopwatch.png</file>
+        <file>Risorse/stopwatch-black.png</file>
+        <file>Risorse/timer.png</file>
+        <file>Risorse/timer-black.png</file>
+    </qresource>
+</RCC>
