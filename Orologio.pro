@@ -26,6 +26,7 @@ SOURCES += \
     PannelloOrologio.cpp \
     PannelloSveglia.cpp \
     PannelloTimer.cpp \
+    TimerWidget.cpp \
     main.cpp \
     MainWindow.cpp
 
@@ -47,7 +48,8 @@ HEADERS += \
     PannelloImpostazioni.h \
     PannelloOrologio.h \
     PannelloSveglia.h \
-    PannelloTimer.h
+    PannelloTimer.h \
+    TimerWidget.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

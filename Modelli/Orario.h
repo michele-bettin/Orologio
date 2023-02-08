@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <time.h>
-#include "Callbacktimer.h"
+#include "CallBackTimer.h"
 
 // Rappresenta un semplice orario composto da: ore, minuti e secondi.
 class Orario

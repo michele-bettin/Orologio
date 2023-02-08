@@ -164,6 +164,100 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
 }
 
 /*
+    pannello orologio
+*/
+#orologio
+{
+    font-weight: 900;
+    font-size: 50px;
+    color: #f1f1f1;
+    padding: 70px 0px;
+}
+
+/*
+    pannello sveglia
+*/
+
+
+
+
+/*
+    pannello timer
+*/
+#scroll-standard-timer
+{
+    background-color: #2e2f30;
+    border: none;
+}
+
+#frame-standard-timer
+{
+    background-color: #2e2f30;
+}
+
+/*timer widget*/
+#timer-widget
+{
+    background-color: #404142;
+    border-radius: 15px;
+    padding: 20px 50px;
+}
+
+#timer-widget-titolo
+{
+    font-weight: 500;
+    font-size: 20px;
+    color: #f1f1f1;
+}
+
+#timer-widget-timer
+{
+    font-weight: 900;
+    font-size: 35px;
+    color: #f1f1f1;
+}
+
+#timer-finito-msg
+{
+    background-color: #b30000;
+}
+
+#timer-finito-msg QLabel
+{
+    color: #f1f1f1;
+    text-align: left;
+    font-size: 15px;
+}
+
+#timer-finito-msg QPushButton
+{
+    background-color: #212222;
+    color: #f1f1f1;
+    font-weight: 600;
+    border: none;
+    padding: 10px 30px;
+    margin: 0px;
+}
+
+#timer-finito-msg QPushButton:hover
+{
+    background-color: #98a9ee;
+}
+
+/*
+    panello cronometro
+*/
+#cronometro
+{
+    font-weight: 900;
+    font-size: 100px;
+    color: #f1f1f1;
+    padding: 50px 0px;
+}
+
+
+
+/*
     generale
 */
 #titolo
@@ -174,5 +268,25 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
     padding: 10px 0 20px 0;
 }
 
+/*bottone icona*/
+#bottone-icona-parent
+{
+    background-color: #2e2f30;
+    border: none;
+}
 
+#bottone-icona
+{
+    background-color: #212222;
+}
+
+#bottone-icona:disabled
+{
+    background-color: #404142;
+}
+
+#bottone-icona:hover
+{
+    background-color: #98a9ee;
+}
 

@@ -34,11 +34,11 @@ InfoDialog::InfoDialog(QWidget *parent)
     autoriTitolo -> setAlignment(Qt::AlignCenter);
     frameLayout -> addWidget(autoriTitolo);
 
-    autore1 = new QLabel("Bettin Michele");
+    autore1 = new QLabel("Bettin Michele: 2042883");
     autore1 -> setAlignment(Qt::AlignCenter);
     autore1 -> setObjectName("autore");
     frameLayout -> addWidget(autore1);
-    autore2 = new QLabel("Favaron Riccardo");
+    autore2 = new QLabel("Favaron Riccardo: 2042386");
     autore2 -> setAlignment(Qt::AlignCenter);
     autore2 -> setObjectName("autore");
     frameLayout -> addWidget(autore2);

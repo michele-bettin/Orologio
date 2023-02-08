@@ -121,6 +121,7 @@ void App::pannelloDestro()
     QScrollArea *scroll = new QScrollArea();
     scroll -> setMinimumWidth(840);
     scroll -> setContentsMargins(0, 0, 0, 0);
+    scroll -> setWidgetResizable(true);
     scroll -> setObjectName("scroll");
 
     QFrame *pdFrame = new QFrame(scroll);
