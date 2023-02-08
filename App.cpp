@@ -37,7 +37,7 @@ void App::menu()
     fileMenu -> addAction(esciActionFileMenu);
 
     //realizzazione opzione "Vista"
-    vistaMenu = new QMenu("Vista");
+    vistaMenu = new QMenu("Visualizza");
     menuBar -> addMenu(vistaMenu);
     orologioActionVistaMenu = new QAction("Orologio", vistaMenu);
     orologioActionVistaMenu -> setIcon(QIcon(":Risorse/globe-black.png"));
