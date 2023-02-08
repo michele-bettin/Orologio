@@ -31,11 +31,11 @@ public:
 
     virtual std::string ToString() const;
 
-    // Compara la data corrente con quella reale del computer ogni secondo.
-    virtual void Avvia(CallBackTimer& c);
+    // Compara l' oggetto data corrente con quella reale del computer sommata al fuso orario indicato ogni secondo.
+    virtual void Avvia(CallBackTimer& c, int fuso);
 
-    // Aggiorna la data corrente di un solo giorno.
-    virtual void Avvia();
+    // Compara l' oggetto data corrente con quella reale del computer sommata al fuso orario indicato.
+    virtual void Avvia(int fuso);
 };
 
 std::ostream& operator<<(std::ostream&, const Data&);

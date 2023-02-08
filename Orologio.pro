@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Collezioni/ArrayList.cpp \
     Modelli/CallBackTimer.cpp \
     Modelli/Cronometro.cpp \
     Modelli/Data.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
     MainWindow.cpp
 
 HEADERS += \
+    Collezioni/ArrayList.h \
     Modelli/CallBackTimer.h \
     Modelli/Cronometro.h \
     Modelli/Data.h \

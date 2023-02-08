@@ -36,7 +36,7 @@ void Orologio::Avvia()
 {
 
         Orario::Avvia();
-        Data::Avvia();
+        Data::Avvia(fusoOrario);
 
 }
 
