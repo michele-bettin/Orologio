@@ -9,10 +9,10 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    AggiungiCustomTimerDialog.cpp \
     App.cpp \
     BottoneIcona.cpp \
     BottoneMenu.cpp \
-    Collezioni/ArrayList.cpp \
     InfoDialog.cpp \
     Modelli/CallBackTimer.cpp \
     Modelli/Cronometro.cpp \
@@ -31,6 +31,7 @@ SOURCES += \
     MainWindow.cpp
 
 HEADERS += \
+    AggiungiCustomTimerDialog.h \
     App.h \
     BottoneIcona.h \
     BottoneMenu.h \

@@ -8,6 +8,9 @@
 #include <QFrame>
 #include <QLabel>
 #include "BottoneIcona.h"
+#include "TimerWidget.h"
+#include "./Collezioni/ArrayList.h"
+#include "AggiungiCustomTimerDialog.h"
 
 class PannelloTimer : public QWidget
 {
@@ -20,12 +23,25 @@ private:
 
     QFrame *frameBottoni;
     QHBoxLayout *frameBottoniLayout;
-    BottoneIcona *bottoneModifica;
+    BottoneIcona *bottoneEliminazione;
     BottoneIcona *bottoneAggiungi;
 
     void mostraStandardTimer();
+
+    ArrayList<TimerWidget*> collezioneCustomTimer;
+    int numeroTimerEsistenti = 0;
+
+    QScrollArea *scrollCustomTimer;
+    QFrame *frameCustomTimer;
+    QHBoxLayout *frameCustomTimerLayout;
+    void mostraCustomTimer();
+
+    AggiungiCustomTimerDialog *actd;
 public:
     PannelloTimer(QWidget *parent = 0);
+private slots:
+    void aggiungiCustomTimer();
+    void eliminazioneCustomTimer();
 };
 
 #endif // PANNELLOTIMER_H

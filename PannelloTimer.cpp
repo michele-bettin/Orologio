@@ -1,9 +1,10 @@
 #include "PannelloTimer.h"
-#include "TimerWidget.h"
 
 PannelloTimer::PannelloTimer(QWidget *parent)
     : QWidget(parent)
 {
+    collezioneCustomTimer = ArrayList<TimerWidget*>();
+
     layout = new QVBoxLayout(this);
     layout -> setContentsMargins(0, 0, 0, 0);
 
@@ -23,6 +24,8 @@ PannelloTimer::PannelloTimer(QWidget *parent)
 
     mostraStandardTimer();
 
+    mostraCustomTimer();
+
     layout -> addWidget(frame);
 
     //oggetti per la realizzione dei bottoni per la creazione e eliminazione dei timer custom
@@ -34,13 +37,15 @@ PannelloTimer::PannelloTimer(QWidget *parent)
     frameBottoniLayout -> setContentsMargins(0, 0, 0, 0);
     frameBottoniLayout -> setSpacing(0);
 
-    bottoneModifica = new BottoneIcona("edit");
-    bottoneModifica -> setDisabled(true);
-    bottoneModifica -> setCursor(Qt::PointingHandCursor);
-    frameBottoniLayout -> addWidget(bottoneModifica);
+    bottoneEliminazione = new BottoneIcona("edit");
+    bottoneEliminazione -> setDisabled(true);
+    bottoneEliminazione -> setCursor(Qt::PointingHandCursor);
+    connect(bottoneEliminazione, &QPushButton::pressed, this, &PannelloTimer::eliminazioneCustomTimer);
+    frameBottoniLayout -> addWidget(bottoneEliminazione);
 
     bottoneAggiungi = new BottoneIcona("add");
     bottoneAggiungi -> setCursor(Qt::PointingHandCursor);
+    connect(bottoneAggiungi, &QPushButton::pressed, this, &PannelloTimer::aggiungiCustomTimer);
     frameBottoniLayout -> addWidget(bottoneAggiungi);
 }
 
@@ -77,4 +82,65 @@ void PannelloTimer::mostraStandardTimer()
 
     frameLayout -> addWidget(scrollStandardTimer);
     frameLayout -> setAlignment(scrollStandardTimer, Qt::AlignTop);
+}
+
+void PannelloTimer::mostraCustomTimer()
+{
+    scrollCustomTimer = new QScrollArea();
+    scrollCustomTimer -> setObjectName("scroll-custom-timer");
+    scrollCustomTimer -> setContentsMargins(0, 0, 0, 0);
+    scrollCustomTimer -> setWidgetResizable(true);
+    scrollCustomTimer -> setFixedHeight(250);
+    scrollCustomTimer -> setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+    scrollCustomTimer -> setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    frameCustomTimer = new QFrame(scrollCustomTimer);
+    frameCustomTimer -> setObjectName("frame-custom-timer");
+    scrollCustomTimer -> setWidget(frameCustomTimer);
+
+    frameCustomTimerLayout = new QHBoxLayout(frameCustomTimer);
+    frameCustomTimerLayout -> setContentsMargins(50, 50, 50, 0);
+    frameCustomTimerLayout -> setAlignment(Qt::AlignTop | Qt::AlignLeft);
+    frameCustomTimerLayout -> setSpacing(50);
+
+    frameLayout -> addWidget(scrollCustomTimer);
+    frameLayout -> setAlignment(scrollCustomTimer, Qt::AlignTop);
+}
+
+void PannelloTimer::aggiungiCustomTimer()
+{
+    actd = new AggiungiCustomTimerDialog(&collezioneCustomTimer, &numeroTimerEsistenti);
+    actd -> setWindowTitle("Orologio - Aggiungi un nuovo timer");
+    actd -> setModal(true);
+    actd -> exec();
+
+    //aggiungo il nuovo timer creato
+    if (numeroTimerEsistenti <= collezioneCustomTimer.GetDimensione())
+    {
+        frameCustomTimerLayout -> addWidget(*collezioneCustomTimer.Get(numeroTimerEsistenti - 1));
+    }
+
+    //rendo cliccabile il bottone per la cancellazione dei timer aggiunti
+    if (collezioneCustomTimer.GetDimensione() > 0)
+    {
+        bottoneEliminazione -> setDisabled(false);
+    }
+}
+
+void PannelloTimer::eliminazioneCustomTimer()
+{
+    numeroTimerEsistenti = 0;
+    bottoneEliminazione -> setDisabled(true);
+
+    //rimozione TimerWidget dal layout
+    while (frameCustomTimerLayout -> count() > 0) {
+        QLayoutItem *item = frameCustomTimerLayout -> takeAt(0);
+        if (item -> widget()) {
+            delete item -> widget();
+        }
+        delete item;
+    }
+
+    //reset dell'array list
+    collezioneCustomTimer.RimuoviTutti();
 }
