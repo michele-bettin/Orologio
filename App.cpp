@@ -7,6 +7,11 @@ App::App(QWidget *parent)
     layout = new QHBoxLayout(this);
     layout -> setContentsMargins(0, 0, 0, 0);
     layout -> setSpacing(0);
+
+    orologio = new Orologio(1);
+    cBT = new CallBackTimer();
+    orologio -> Avvia(*cBT);
+
     menu();
     pannelloSinistro();
     pannelloDestro();
@@ -133,7 +138,7 @@ void App::pannelloDestro()
     pdFrameLayout -> setSpacing(0);
 
     //creazione pannelli a destra
-    pOrologio = new PannelloOrologio(pdFrame);
+    pOrologio = new PannelloOrologio(orologio, pdFrame);
     connect(this, &App::bmOrologioAction, this, &App::orologioActive);
     pdFrameLayout -> addWidget(pOrologio);
     pSveglia = new PannelloSveglia(pdFrame);
@@ -145,7 +150,7 @@ void App::pannelloDestro()
     pCronometro = new PannelloCronometro(pdFrame);
     connect(this, &App::bmCronometroAction, this, &App::cronometroActive);
     pdFrameLayout -> addWidget(pCronometro);
-    pImpostazioni = new PannelloImpostazioni(pdFrame);
+    pImpostazioni = new PannelloImpostazioni(orologio, pdFrame);
     connect(this, &App::bmImpostazioniAction, this, &App::impostazioniActive);
     pdFrameLayout -> addWidget(pImpostazioni);
 

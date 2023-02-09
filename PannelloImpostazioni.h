@@ -3,8 +3,12 @@
 
 #include <QWidget>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QFrame>
 #include <QLabel>
+#include <QComboBox>
+#include <QPushButton>
+#include "./Modelli/Orologio.h"
 
 class PannelloImpostazioni : public QWidget
 {
@@ -14,8 +18,16 @@ private:
     QFrame *frame;
     QVBoxLayout *frameLayout;
     QLabel *titolo;
+    QLabel *sottotitolo;
+    QComboBox *fusoOrarioInput;
+    QFrame *frameBottoni;
+    QHBoxLayout *frameBottoniLayout;
+    QPushButton *bottoneReset;
+    QPushButton *bottoneModifica;
+
+    void aggiornaFusoOrarioInput(Orologio *o);
 public:
-    PannelloImpostazioni(QWidget *parent = 0);
+    PannelloImpostazioni(Orologio *o, QWidget *parent = 0);
 };
 
 #endif // PANNELLOIMPOSTAZIONI_H

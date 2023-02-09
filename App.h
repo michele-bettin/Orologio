@@ -9,6 +9,8 @@
 #include <QApplication>
 #include <QFrame>
 #include <QScrollArea>
+#include "./Modelli/Orologio.h"
+#include "./Modelli/CallBackTimer.h"
 #include "BottoneMenu.h"
 #include "PannelloOrologio.h"
 #include "PannelloSveglia.h"
@@ -39,6 +41,10 @@ private:
 
     QMenu *infoMenu;
     QAction *informazioniActionInfoMenu;
+
+    //Oggetti per la realizzazione dell'orologio
+    Orologio *orologio;
+    CallBackTimer *cBT;
 
     //Oggetti per la realizzazione del menu laterale
     BottoneMenu *bmOrologio;

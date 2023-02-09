@@ -346,6 +346,14 @@ QComboBox::drop-down
     padding: 10px 0 20px 0;
 }
 
+#sottotitolo
+{
+    font-weight: 700;
+    text-decoration: underline;
+    font-size: 20px;
+    color: #f1f1f1;
+}
+
 #bottone
 {
     background-color: #212222;

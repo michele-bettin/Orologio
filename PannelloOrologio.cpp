@@ -1,6 +1,6 @@
 #include "PannelloOrologio.h"
 
-PannelloOrologio::PannelloOrologio(QWidget *parent)
+PannelloOrologio::PannelloOrologio(Orologio *o, QWidget *parent)
     : QWidget(parent)
 {
     layout = new QVBoxLayout(this);
@@ -27,10 +27,6 @@ PannelloOrologio::PannelloOrologio(QWidget *parent)
     frameOrologioLayout -> setContentsMargins(0, 0, 0, 0);
     frameOrologioLayout -> setAlignment(Qt::AlignTop | Qt::AlignCenter);
 
-    orologio = new Orologio(1);
-    cBT = new CallBackTimer();
-    orologio -> Avvia(*cBT);
-
     orologioLabel = new QLabel();
     QFont font("Aria");
     orologioLabel -> setFont(font);
@@ -39,14 +35,11 @@ PannelloOrologio::PannelloOrologio(QWidget *parent)
     frameOrologioLayout -> addWidget(orologioLabel);
 
     QTimer *t = new QTimer();
-    connect(t, &QTimer::timeout, this, &PannelloOrologio::mostraOrologio);
+    connect(t, &QTimer::timeout, [o, this]()
+    {
+        orologioLabel -> setText(QString::fromStdString(o -> ToString()));
+    });
     t -> start(1);
-    mostraOrologio();
 
     layout -> addWidget(frame);
-}
-
-void PannelloOrologio::mostraOrologio()
-{
-    orologioLabel -> setText(QString::fromStdString(orologio -> ToString()));
 }

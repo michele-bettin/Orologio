@@ -9,7 +9,6 @@
 #include <QTime>
 #include <QFont>
 #include "./Modelli/Orologio.h"
-#include "./Modelli/CallBackTimer.h"
 
 class PannelloOrologio : public QWidget
 {
@@ -21,13 +20,9 @@ private:
     QLabel *titolo;
     QFrame *frameOrologio;
     QVBoxLayout *frameOrologioLayout;
-    Orologio *orologio;
-    CallBackTimer *cBT;
     QLabel *orologioLabel;
 public:
-    PannelloOrologio(QWidget *parent = 0);
-private slots:
-    void mostraOrologio();
+    PannelloOrologio(Orologio *o, QWidget *parent = 0);
 };
 
 #endif // PANNELLOOROLOGIO_H

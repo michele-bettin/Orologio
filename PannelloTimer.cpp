@@ -37,7 +37,7 @@ PannelloTimer::PannelloTimer(QWidget *parent)
     frameBottoniLayout -> setContentsMargins(0, 0, 0, 0);
     frameBottoniLayout -> setSpacing(0);
 
-    bottoneEliminazione = new BottoneIcona("edit");
+    bottoneEliminazione = new BottoneIcona("delete");
     bottoneEliminazione -> setDisabled(true);
     bottoneEliminazione -> setCursor(Qt::PointingHandCursor);
     connect(bottoneEliminazione, &QPushButton::pressed, this, &PannelloTimer::eliminazioneCustomTimer);
