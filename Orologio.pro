@@ -50,6 +50,7 @@ HEADERS += \
     PannelloOrologio.h \
     PannelloSveglia.h \
     PannelloTimer.h \
+    Parser/MioParserJSON.h \
     TimerWidget.h
 
 # Default rules for deployment.

@@ -11,6 +11,7 @@ int Orologio::getFusoOrario() const
 
 void Orologio::ImpostaFusoOrario(int zone) {
     fusoOrario = zone;
+    ImpostaOraUTC();
     AvanzaOre(zone);
 }
 
