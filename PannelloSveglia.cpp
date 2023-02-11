@@ -1,10 +1,9 @@
 #include "PannelloSveglia.h"
+#include "App.h"
 
-PannelloSveglia::PannelloSveglia(Orologio *o, QWidget *parent)
+PannelloSveglia::PannelloSveglia(Orologio *o, ArrayList<SvegliaWidget*>* a, QWidget *parent)
     : QWidget(parent)
 {
-    collezioneSveglie = ArrayList<SvegliaWidget*>();
-
     layout = new QVBoxLayout(this);
     layout -> setContentsMargins(0, 0, 0, 0);
 
@@ -42,6 +41,12 @@ PannelloSveglia::PannelloSveglia(Orologio *o, QWidget *parent)
     frameLayout -> addWidget(scrollSveglie);
     frameLayout -> setAlignment(scrollSveglie, Qt::AlignTop);
 
+    App* app = dynamic_cast<App*>(parent);
+    connect(this, &PannelloSveglia::signalInizializza, [a, this]()
+    {
+        inizializzaSveglie(a);
+    });
+
     layout -> addWidget(frame);
 
     //oggetti per la realizzione dei bottoni per la creazione e eliminazione delle sveglie
@@ -56,7 +61,7 @@ PannelloSveglia::PannelloSveglia(Orologio *o, QWidget *parent)
     bottoneEliminazione = new BottoneIcona("delete");
     bottoneEliminazione -> setDisabled(true);
     bottoneEliminazione -> setCursor(Qt::PointingHandCursor);
-    connect(bottoneEliminazione, &QPushButton::pressed, [this]()
+    connect(bottoneEliminazione, &QPushButton::pressed, [a, this]()
     {
         numeroSveglieEsistenti = 0;
         bottoneEliminazione -> setDisabled(true);
@@ -73,30 +78,38 @@ PannelloSveglia::PannelloSveglia(Orologio *o, QWidget *parent)
         }
 
         //reset dell'array list
-        collezioneSveglie.RimuoviTutti();
+        a->RimuoviTutti();
     });
     frameBottoniLayout -> addWidget(bottoneEliminazione);
 
     bottoneAggiungi = new BottoneIcona("add");
     bottoneAggiungi -> setCursor(Qt::PointingHandCursor);
-    connect(bottoneAggiungi, &QPushButton::pressed, [o, this]()
+    connect(bottoneAggiungi, &QPushButton::pressed, [a, o, this]()
     {
-        asd = new AggiungiSvegliaDialog(o, &collezioneSveglie, &numeroSveglieEsistenti);
+        asd = new AggiungiSvegliaDialog(o, a, &numeroSveglieEsistenti);
         asd -> setWindowTitle("Orologio - Aggiungi una nuova sveglia");
         asd -> setModal(true);
         asd -> exec();
 
         //aggiungo la nuova sveglia creata
-        if (numeroSveglieEsistenti <= collezioneSveglie.GetDimensione())
+        if (numeroSveglieEsistenti <= a->GetDimensione())
         {
-            frameSveglieLayout -> addWidget(*collezioneSveglie.Get(numeroSveglieEsistenti - 1));
+            frameSveglieLayout -> addWidget(*a->Get(numeroSveglieEsistenti - 1));
         }
 
         //rendo cliccabile il bottone per la cancellazio delle sveglie aggiunte
-        if (collezioneSveglie.GetDimensione() > 0)
+        if (a->GetDimensione() > 0)
         {
             bottoneEliminazione -> setDisabled(false);
         }
     });
     frameBottoniLayout -> addWidget(bottoneAggiungi);
+}
+
+void PannelloSveglia::inizializzaSveglie(ArrayList<SvegliaWidget*>* a) {
+    for (; numeroSveglieEsistenti < a->GetDimensione(); numeroSveglieEsistenti++) {
+        (*(a->Get(0)))->getOre();
+        std::cout << (*(a->Get(0)))->getOre();
+        frameSveglieLayout -> addWidget(*a->Get(numeroSveglieEsistenti));
+    }
 }

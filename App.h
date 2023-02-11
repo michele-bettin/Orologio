@@ -17,6 +17,9 @@
 #include "PannelloTimer.h"
 #include "PannelloCronometro.h"
 #include "PannelloImpostazioni.h"
+#include "./Collezioni/ArrayList.h"
+#include "SvegliaWidget.h"
+#include "./Parser/MioParserJSON.h"
 
 class App : public QWidget
 {
@@ -28,7 +31,6 @@ private:
     QMenuBar *menuBar;
 
     QMenu *fileMenu;
-    QAction *apriActionFileMenu;
     QAction *salvaActionFileMenu;
     QAction *esciActionFileMenu;
 
@@ -60,11 +62,16 @@ private:
     PannelloCronometro *pCronometro;
     PannelloImpostazioni *pImpostazioni;
 
+    //Oggetti per la persistenza dei dati
+    ArrayList<SvegliaWidget*> sveglieSalvate;
+
     void menu();
     void pannelloSinistro();
     void pannelloDestro();
 public:
     App(QWidget *parent = 0);
+    QAction *apriActionFileMenu;
+
 signals:
     void bmOrologioAction();
     void bmSvegliaAction();

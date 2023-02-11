@@ -32,7 +32,7 @@ public:
 
             // Verifico la natura degli oggetti
             if (typeid(*lista.Get(i)) == typeid(SvegliaWidget*)) {
-                writeSvegliaToJson(jsonObject, *lista.Get(i));
+                scriviDaSvegliaWidgetAJSON(jsonObject, *lista.Get(i));
 
             }
 
@@ -54,7 +54,7 @@ public:
 
     void static scriviDaJSONASvegliaWidget(QJsonObject& jsonObject, SvegliaWidget* sveglia, Orologio* oA = 0)
     {
-        sveglia = new SvegliaWidget(oA, jsonObject["titolo"], jsonObject["ore"], jsonObject["minuti"], jsonObject["secondi"]);
+        sveglia = new SvegliaWidget(oA, jsonObject["titolo"].toString(), jsonObject["ore"].toInt(), jsonObject["minuti"].toInt(), jsonObject["secondi"].toInt());
     }
 
 
@@ -82,8 +82,9 @@ public:
             for (int i = 0; i < jsonArray.size(); i++)
             {
                 QJsonObject jsonObject = jsonArray[i].toObject();
-                scriviDaJSONAWidgetSveglia(jsonObject, *result.Get(i), oA)
-                result.Aggiungi(*result.Get(i));
+                //SvegliaWidget* sveglia;
+                //scriviDaJSONASvegliaWidget(jsonObject, sveglia, oA);
+                result.Aggiungi(new SvegliaWidget(oA, jsonObject["titolo"].toString(), jsonObject["ore"].toInt(), jsonObject["minuti"].toInt(), jsonObject["secondi"].toInt()));
             }
 
             return result;

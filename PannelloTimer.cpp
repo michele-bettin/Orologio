@@ -68,7 +68,7 @@ void PannelloTimer::mostraStandardTimer()
     frameStandardTimerLayout -> setAlignment(Qt::AlignTop | Qt::AlignLeft);
     frameStandardTimerLayout -> setSpacing(50);
 
-    TimerWidget *treMinuti = new TimerWidget("3 min", 0, 0, 3, frameStandardTimer);
+    TimerWidget *treMinuti = new TimerWidget("3 min", 0, 3, 0, frameStandardTimer);
     frameStandardTimerLayout -> addWidget(treMinuti);
 
     TimerWidget *cinqueMinuti = new TimerWidget("5 min", 0, 5, 0, frameStandardTimer);

@@ -4,6 +4,8 @@
 App::App(QWidget *parent)
     : QWidget(parent)
 {
+    sveglieSalvate = ArrayList<SvegliaWidget*>();
+
     layout = new QHBoxLayout(this);
     layout -> setContentsMargins(0, 0, 0, 0);
     layout -> setSpacing(0);
@@ -27,10 +29,19 @@ void App::menu()
     apriActionFileMenu = new QAction("Apri", fileMenu);
     apriActionFileMenu -> setIcon(QIcon(":Risorse/open.png"));
     apriActionFileMenu -> setShortcut(Qt::Key_O | Qt::CTRL);
+
+
+
+
     fileMenu -> addAction(apriActionFileMenu);
     salvaActionFileMenu = new QAction("Salva", fileMenu);
     salvaActionFileMenu -> setIcon(QIcon(":Risorse/save.png"));
     salvaActionFileMenu -> setShortcut(Qt::Key_S | Qt::CTRL);
+    connect(salvaActionFileMenu, &QAction::triggered, [this]()
+        {
+            MioParserJSON::scriviArraySuFileJson("E:/Michele/Scuola/Università/2°Anno/Programmazione a Oggetti/MyClock/Salvataggi/Sveglie.json", sveglieSalvate);
+        }
+    );
     fileMenu -> addAction(salvaActionFileMenu);
     esciActionFileMenu = new QAction("Esci", fileMenu);
     esciActionFileMenu -> setIcon(QIcon(":Risorse/exit.png"));
@@ -141,7 +152,7 @@ void App::pannelloDestro()
     pOrologio = new PannelloOrologio(orologio, pdFrame);
     connect(this, &App::bmOrologioAction, this, &App::orologioActive);
     pdFrameLayout -> addWidget(pOrologio);
-    pSveglia = new PannelloSveglia(orologio, pdFrame);
+    pSveglia = new PannelloSveglia(orologio, &sveglieSalvate, this);
     connect(this, &App::bmSvegliaAction, this, &App::svegliaActive);
     pdFrameLayout -> addWidget(pSveglia);
     pTimer = new PannelloTimer(pdFrame);
@@ -153,6 +164,15 @@ void App::pannelloDestro()
     pImpostazioni = new PannelloImpostazioni(orologio, pdFrame);
     connect(this, &App::bmImpostazioniAction, this, &App::impostazioniActive);
     pdFrameLayout -> addWidget(pImpostazioni);
+
+    //connect(apriActionFileMenu, &QAction::triggered, pSveglia, &PannelloSveglia::signalInizializza);
+    connect(apriActionFileMenu, &QAction::triggered, [this]()
+        {
+            sveglieSalvate = ArrayList<SvegliaWidget*>(MioParserJSON::caricaArrayDaFileJson<SvegliaWidget>("E:/Michele/Scuola/Università/2°Anno/Programmazione a Oggetti/MyClock/Salvataggi/Sveglie.json", orologio));
+
+            pSveglia -> inizializzaSveglie(&sveglieSalvate);
+        }
+    );
 
     //inizializzazione pannelli a destra
     bmOrologio -> setStyleSheet("background-color: #2e2f30;");

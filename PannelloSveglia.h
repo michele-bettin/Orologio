@@ -22,7 +22,6 @@ private:
     QVBoxLayout *frameLayout;
     QLabel *titolo;
 
-    ArrayList<SvegliaWidget*> collezioneSveglie;
     int numeroSveglieEsistenti = 0;
 
     QScrollArea *scrollSveglie;
@@ -35,8 +34,16 @@ private:
     BottoneIcona *bottoneAggiungi;
 
     AggiungiSvegliaDialog *asd;
-public:
-    PannelloSveglia(Orologio *o, QWidget *parent = 0);
-};
 
+
+public:
+    PannelloSveglia(Orologio *o, ArrayList<SvegliaWidget*>* a, QWidget *parent = 0);
+
+    void inizializzaSveglie(ArrayList<SvegliaWidget*>* a);
+
+
+signals:
+    void signalInizializza();
+
+};
 #endif // PANNELLOSVEGLIA_H

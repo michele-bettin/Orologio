@@ -55,7 +55,7 @@ AggiungiSvegliaDialog::AggiungiSvegliaDialog(Orologio *o, ArrayList<SvegliaWidge
     frameInputLayout -> addWidget(secondiInput);
 
     //bottone aggiungi nuova sveglia
-    bottoneAggiungi = new QPushButton("Aggiungi timer");
+    bottoneAggiungi = new QPushButton("Aggiungi sveglia");
     bottoneAggiungi -> setObjectName("bottone");
     bottoneAggiungi -> setCursor(Qt::PointingHandCursor);
     connect(bottoneAggiungi, &QPushButton::pressed, [o, a, n, this]()
@@ -63,12 +63,12 @@ AggiungiSvegliaDialog::AggiungiSvegliaDialog(Orologio *o, ArrayList<SvegliaWidge
         int ore = oreInput -> currentText().toInt();
         int minuti = minutiInput -> currentText().toInt();
         int secondi = secondiInput -> currentText().toInt();
-        QString titoloTimerString = titoloSvegliaInput -> text();
-        if (titoloTimerString == "")
+        QString titoloSvegliaString = titoloSvegliaInput -> text();
+        if (titoloSvegliaString == "")
         {
-            titoloTimerString = "Nuova sveglia";
+            titoloSvegliaString = "Nuova sveglia";
         }
-        SvegliaWidget *sw = new SvegliaWidget(o, titoloTimerString, ore, minuti, secondi);
+        SvegliaWidget *sw = new SvegliaWidget(o, titoloSvegliaString, ore, minuti, secondi);
         a -> Aggiungi(sw);
         *n = *n + 1;
         this -> close();
