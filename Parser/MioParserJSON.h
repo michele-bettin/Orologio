@@ -14,12 +14,12 @@
 class MioParserJSON {
 public:
 
-    void static writeSvegliaWidgetToJson(QJsonObject& jsonObject, const SvegliaWidget* sveglia)
+    void static scriviSvegliaWidgetToJson(QJsonObject& jsonObject, const SvegliaWidget* sveglia)
     {
-        jsonObject["titolo"] = "Prova";
-        jsonObject["ore"] = sveglia->Ore();
-        jsonObject["minuti"] = sveglia->Minuti();
-        jsonObject["secondi"] = sveglia->Secondi();
+        jsonObject["titolo"] = sveglia -> getTitolo();
+        jsonObject["ore"] = sveglia -> getOre();
+        jsonObject["minuti"] = sveglia -> getMinuti();
+        jsonObject["secondi"] = sveglia -> getSecondi();
     }
 
     template <typename T>
