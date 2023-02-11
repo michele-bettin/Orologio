@@ -1,6 +1,5 @@
 #include "Orario.h"
 
-
 bool IsInRange(int numero, int from, int to) {
     return numero >= from && numero <= to;
 }
@@ -100,9 +99,6 @@ void Orario::Avvia() {
     secondi++;
     NormalizzaOrario();
 }
-
-
-
 
 
 
