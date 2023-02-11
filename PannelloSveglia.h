@@ -7,7 +7,11 @@
 #include <QScrollArea>
 #include <QFrame>
 #include <QLabel>
+#include "AggiungiSvegliaDialog.h"
 #include "BottoneIcona.h"
+#include "./Modelli/Orologio.h"
+#include "SvegliaWidget.h"
+#include "./Collezioni/ArrayList.h"
 
 class PannelloSveglia : public QWidget
 {
@@ -18,15 +22,21 @@ private:
     QVBoxLayout *frameLayout;
     QLabel *titolo;
 
+    ArrayList<SvegliaWidget*> collezioneSveglie;
+    int numeroSveglieEsistenti = 0;
+
+    QScrollArea *scrollSveglie;
+    QFrame *frameSveglie;
+    QHBoxLayout *frameSveglieLayout;
+
     QFrame *frameBottoni;
     QHBoxLayout *frameBottoniLayout;
     BottoneIcona *bottoneEliminazione;
     BottoneIcona *bottoneAggiungi;
+
+    AggiungiSvegliaDialog *asd;
 public:
-    PannelloSveglia(QWidget *parent = 0);
-private slots:
-    void eliminazioneSveglia();
-    void aggiungiSveglia();
+    PannelloSveglia(Orologio *o, QWidget *parent = 0);
 };
 
 #endif // PANNELLOSVEGLIA_H

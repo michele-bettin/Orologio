@@ -141,7 +141,7 @@ void App::pannelloDestro()
     pOrologio = new PannelloOrologio(orologio, pdFrame);
     connect(this, &App::bmOrologioAction, this, &App::orologioActive);
     pdFrameLayout -> addWidget(pOrologio);
-    pSveglia = new PannelloSveglia(pdFrame);
+    pSveglia = new PannelloSveglia(orologio, pdFrame);
     connect(this, &App::bmSvegliaAction, this, &App::svegliaActive);
     pdFrameLayout -> addWidget(pSveglia);
     pTimer = new PannelloTimer(pdFrame);

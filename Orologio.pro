@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     AggiungiCustomTimerDialog.cpp \
+    AggiungiSvegliaDialog.cpp \
     App.cpp \
     BottoneIcona.cpp \
     BottoneMenu.cpp \
@@ -26,12 +27,14 @@ SOURCES += \
     PannelloOrologio.cpp \
     PannelloSveglia.cpp \
     PannelloTimer.cpp \
+    SvegliaWidget.cpp \
     TimerWidget.cpp \
     main.cpp \
     MainWindow.cpp
 
 HEADERS += \
     AggiungiCustomTimerDialog.h \
+    AggiungiSvegliaDialog.h \
     App.h \
     BottoneIcona.h \
     BottoneMenu.h \
@@ -51,6 +54,7 @@ HEADERS += \
     PannelloSveglia.h \
     PannelloTimer.h \
     Parser/MioParserJSON.h \
+    SvegliaWidget.h \
     TimerWidget.h
 
 # Default rules for deployment.

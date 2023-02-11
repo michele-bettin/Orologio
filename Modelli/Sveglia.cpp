@@ -9,6 +9,13 @@ Orario Sveglia::GetTempoRimanente() const
     return *this - *OraAttuale;
 }
 
+std::string Sveglia::ToString() const
+{
+    std::string o = Ore() < 10 ? "0" + std::to_string(Ore()) : std::to_string(Ore());
+    std::string m = Minuti() < 10 ? "0" + std::to_string(Minuti()) : std::to_string(Minuti());
+    return o + " : " + m;
+}
+
 bool Sveglia::HaFinito() const
 {
     return *this == *OraAttuale;

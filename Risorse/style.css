@@ -222,9 +222,60 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical
 /*
     pannello sveglia
 */
+/*sveglia widget*/
+#sveglia-widget
+{
+    background-color: #404142;
+    border-radius: 15px;
+    padding: 20px 50px;
+}
 
+#sveglia-widget-titolo
+{
+    font-weight: 500;
+    font-size: 20px;
+    color: #f1f1f1;
+}
 
+#sveglia
+{
+    font-weight: 900;
+    font-size: 45px;
+    color: #f1f1f1;
+}
 
+#sveglia-widget-tempo-rimanente
+{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+#scroll-sveglie
+{
+    background-color: #2e2f30;
+    border: none;
+}
+
+#frame-sveglie
+{
+    background-color: #2e2f30;
+}
+
+/*aggiuingi sveglia dialog*/
+#aggiungi-sveglia-dialog
+{
+    background-color: #2e2f30;
+}
+
+#titolo-sveglia-input
+{
+    padding: 5px;
+    font-size: 15px;
+    font-weight: 900;
+    margin: 10px 0px;
+    width : 250px;
+    border: none
+}
 
 /*
     pannello timer

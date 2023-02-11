@@ -14,6 +14,8 @@ public:
 
     Orario GetTempoRimanente() const;
 
+    std::string ToString() const;
+
     // Questo metodo confida sul fatto che OraAttuale punti ad un oggetto orario che
     // è costantemente aggiornato da un callBack. Fatta questa premessa, il metodo fa
     // semplicemente un confronto tra i due oggetti orario e la sveglia "suonerà"

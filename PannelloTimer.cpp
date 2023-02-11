@@ -133,9 +133,11 @@ void PannelloTimer::eliminazioneCustomTimer()
     bottoneEliminazione -> setDisabled(true);
 
     //rimozione TimerWidget dal layout
-    while (frameCustomTimerLayout -> count() > 0) {
+    while (frameCustomTimerLayout -> count() > 0)
+    {
         QLayoutItem *item = frameCustomTimerLayout -> takeAt(0);
-        if (item -> widget()) {
+        if (item -> widget())
+        {
             delete item -> widget();
         }
         delete item;
