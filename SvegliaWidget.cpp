@@ -42,6 +42,26 @@ SvegliaWidget::SvegliaWidget(Orologio *o, QString ti, int ore, int minuti, int s
     layout -> addWidget(frame);
 }
 
+QString SvegliaWidget::getTitolo() const
+{
+    return titolo -> text();
+}
+
+int SvegliaWidget::getOre() const
+{
+    return sveglia -> Ore();
+}
+
+int SvegliaWidget::getMinuti() const
+{
+    return sveglia -> Minuti();
+}
+
+int SvegliaWidget::getSecondi() const
+{
+    return sveglia -> Secondi();
+}
+
 void SvegliaWidget::mostraTempoRimanente()
 {
     tempoRimanete -> setText("Tempo rimanete: " + QString::fromStdString((sveglia -> GetTempoRimanente()).ToString()));

@@ -10,6 +10,7 @@
 #include <QMessageBox>
 #include <QPixmap>
 #include <QPushButton>
+#include <QString>
 #include "./Modelli/Orologio.h"
 #include "./Modelli/Sveglia.h"
 
@@ -28,6 +29,10 @@ private:
     int i = 0;
 public:
     SvegliaWidget(Orologio *o, QString ti = "Nuova sveglia", int ore = 0, int minuti = 0, int secondi = 0, QWidget *parent = 0);
+    QString getTitolo() const;
+    int getOre() const;
+    int getMinuti() const;
+    int getSecondi() const;
 private slots:
     void mostraTempoRimanente();
 };

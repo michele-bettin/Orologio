@@ -8,14 +8,13 @@
 #include <QTextStream>
 #include <QDebug>
 #include <typeinfo>
-
 #include "../Collezioni/ArrayList.h"
-#include "../Modelli/Sveglia.h""
+#include "../SvegliaWidget.h"
 
 class MioParserJSON {
 public:
 
-    void static writeSvegliaToJson(QJsonObject& jsonObject, const Sveglia* sveglia)
+    void static writeSvegliaWidgetToJson(QJsonObject& jsonObject, const SvegliaWidget* sveglia)
     {
         jsonObject["titolo"] = "Prova";
         jsonObject["ore"] = sveglia->Ore();
