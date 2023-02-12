@@ -25,6 +25,7 @@ public:
     template <typename T>
     void static scriviArraySuFileJson(const QString& percorsoFile, ArrayList<T*> &lista)
     {
+
         QJsonArray jsonArray;
 
         for (int i = 0; i < lista.GetDimensione(); i++) {
@@ -40,10 +41,19 @@ public:
         }
 
         QFile file(percorsoFile);
+
+        if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+            file.resize(0);
+            file.close();
+        }
+
         if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             qDebug() << "Fallito il tentativo di apertura del file: " << percorsoFile;
             return;
         }
+
+
+
 
         QTextStream stream(&file);
         stream << QJsonDocument(jsonArray).toJson(QJsonDocument::Indented);
@@ -54,7 +64,7 @@ public:
 
     void static scriviDaJSONASvegliaWidget(QJsonObject& jsonObject, SvegliaWidget* sveglia, Orologio* oA = 0)
     {
-        sveglia = new SvegliaWidget(oA, jsonObject["titolo"].toString(), jsonObject["ore"].toInt(), jsonObject["minuti"].toInt(), jsonObject["secondi"].toInt());
+
     }
 
 
@@ -82,9 +92,9 @@ public:
             for (int i = 0; i < jsonArray.size(); i++)
             {
                 QJsonObject jsonObject = jsonArray[i].toObject();
-                //SvegliaWidget* sveglia;
+                SvegliaWidget* sveglia = new SvegliaWidget(oA, jsonObject["titolo"].toString(), jsonObject["ore"].toInt(), jsonObject["minuti"].toInt(), jsonObject["secondi"].toInt());
                 //scriviDaJSONASvegliaWidget(jsonObject, sveglia, oA);
-                result.Aggiungi(new SvegliaWidget(oA, jsonObject["titolo"].toString(), jsonObject["ore"].toInt(), jsonObject["minuti"].toInt(), jsonObject["secondi"].toInt()));
+                result.Aggiungi(sveglia);
             }
 
             return result;

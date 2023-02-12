@@ -21,7 +21,7 @@ class ArrayList {
         void Aggiungi(T& elemento);
         void Aggiungi(const T & elemento, int indice);
         void Aggiungi(const ArrayList<T> & lista, int indice);
-        void Aggiungi(const ArrayList<T> & lista);
+        void Aggiungi(ArrayList<T> & lista);
         const T * Rimuovi(int indice);
         void RimuoviTutti();
         bool Sposta(int indice1, int indice2);
@@ -30,6 +30,8 @@ class ArrayList {
         int GetDimensione() const;
         int GetCapacita() const;
         std::string toString() const;
+
+        void setDimensione(int dimensione);
 
     private:
         // L'Array che c'è alla base del nostro ArrayList.
@@ -84,7 +86,6 @@ ArrayList<T>::ArrayList(int dimensione)
 template<class T>
 ArrayList<T>::ArrayList(const ArrayList<T>& lista)
 {
-
     Array = new T[lista.GetDimensione() * 2];
     Capacita = lista.GetDimensione() * 2;
     Dimensione = lista.GetDimensione();
@@ -262,7 +263,7 @@ void ArrayList<T>::Aggiungi(const T& elemento, int indice) {
  * @param lista l'ArrayList<T> da aggiungere a questo.
 */
 template<class T>
-void ArrayList<T>::Aggiungi(const ArrayList<T> & lista)
+void ArrayList<T>::Aggiungi(ArrayList<T> & lista)
 {
 
     for (int i = 0; i < lista.GetDimensione(); i++)
@@ -476,6 +477,11 @@ std::string ArrayList<T>::toString() const
     std::string returnString = streamOut.str();
 
     return returnString;
+}
+
+template<class T>
+void ArrayList<T>::setDimensione(int dimensione) {
+    Dimensione = dimensione;
 }
 
 #endif /* ARRAYLIST_H_ */

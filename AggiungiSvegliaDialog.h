@@ -30,7 +30,7 @@ private:
     QComboBox *secondiInput;
     QPushButton *bottoneAggiungi;
 public:
-    AggiungiSvegliaDialog(Orologio *o, ArrayList<SvegliaWidget*>* a, int *n, QWidget *parent = 0);
+    AggiungiSvegliaDialog(Orologio *o, ArrayList<SvegliaWidget*>* a, QWidget *parent = 0);
 };
 
 #endif // AGGIUNGISVEGLIADIALOG_H

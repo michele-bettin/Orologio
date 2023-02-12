@@ -4,7 +4,7 @@
 App::App(QWidget *parent)
     : QWidget(parent)
 {
-    sveglieSalvate = ArrayList<SvegliaWidget*>();
+    sveglieSalvate = new ArrayList<SvegliaWidget*>();
 
     layout = new QHBoxLayout(this);
     layout -> setContentsMargins(0, 0, 0, 0);
@@ -39,7 +39,14 @@ void App::menu()
     salvaActionFileMenu -> setShortcut(Qt::Key_S | Qt::CTRL);
     connect(salvaActionFileMenu, &QAction::triggered, [this]()
         {
-            MioParserJSON::scriviArraySuFileJson("E:/Michele/Scuola/Università/2°Anno/Programmazione a Oggetti/MyClock/Salvataggi/Sveglie.json", sveglieSalvate);
+            int dim = 0;
+            /*while (sveglieSalvate->Get(dim) != nullptr) {
+                dim++;
+            }
+            sveglieSalvate->setDimensione(dim);
+            int a = dim;*/
+            sveglieSalvate->setDimensione(2);
+            MioParserJSON::scriviArraySuFileJson("E:/Michele/Scuola/Università/2°Anno/Programmazione a Oggetti/MyClock/Salvataggi/Sveglie.json", *sveglieSalvate);
         }
     );
     fileMenu -> addAction(salvaActionFileMenu);
@@ -152,7 +159,7 @@ void App::pannelloDestro()
     pOrologio = new PannelloOrologio(orologio, pdFrame);
     connect(this, &App::bmOrologioAction, this, &App::orologioActive);
     pdFrameLayout -> addWidget(pOrologio);
-    pSveglia = new PannelloSveglia(orologio, &sveglieSalvate, this);
+    pSveglia = new PannelloSveglia(orologio, sveglieSalvate, this);
     connect(this, &App::bmSvegliaAction, this, &App::svegliaActive);
     pdFrameLayout -> addWidget(pSveglia);
     pTimer = new PannelloTimer(pdFrame);
@@ -168,9 +175,9 @@ void App::pannelloDestro()
     //connect(apriActionFileMenu, &QAction::triggered, pSveglia, &PannelloSveglia::signalInizializza);
     connect(apriActionFileMenu, &QAction::triggered, [this]()
         {
-            sveglieSalvate = ArrayList<SvegliaWidget*>(MioParserJSON::caricaArrayDaFileJson<SvegliaWidget>("E:/Michele/Scuola/Università/2°Anno/Programmazione a Oggetti/MyClock/Salvataggi/Sveglie.json", orologio));
+            sveglieSalvate->Aggiungi(MioParserJSON::caricaArrayDaFileJson<SvegliaWidget>("E:/Michele/Scuola/Università/2°Anno/Programmazione a Oggetti/MyClock/Salvataggi/Sveglie.json", orologio));
 
-            pSveglia -> inizializzaSveglie(&sveglieSalvate);
+            pSveglia -> inizializzaSveglie(sveglieSalvate);
         }
     );
 

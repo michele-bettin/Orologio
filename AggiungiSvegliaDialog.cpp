@@ -1,6 +1,6 @@
 #include "AggiungiSvegliaDialog.h"
 
-AggiungiSvegliaDialog::AggiungiSvegliaDialog(Orologio *o, ArrayList<SvegliaWidget*>* a, int *n, QWidget *parent)
+AggiungiSvegliaDialog::AggiungiSvegliaDialog(Orologio *o, ArrayList<SvegliaWidget*>* a, QWidget *parent)
     : QDialog(parent)
 {
     this -> setMinimumSize(500, 300);
@@ -58,7 +58,7 @@ AggiungiSvegliaDialog::AggiungiSvegliaDialog(Orologio *o, ArrayList<SvegliaWidge
     bottoneAggiungi = new QPushButton("Aggiungi sveglia");
     bottoneAggiungi -> setObjectName("bottone");
     bottoneAggiungi -> setCursor(Qt::PointingHandCursor);
-    connect(bottoneAggiungi, &QPushButton::pressed, [o, a, n, this]()
+    connect(bottoneAggiungi, &QPushButton::pressed, [o, a, this]()
     {
         int ore = oreInput -> currentText().toInt();
         int minuti = minutiInput -> currentText().toInt();
@@ -70,7 +70,6 @@ AggiungiSvegliaDialog::AggiungiSvegliaDialog(Orologio *o, ArrayList<SvegliaWidge
         }
         SvegliaWidget *sw = new SvegliaWidget(o, titoloSvegliaString, ore, minuti, secondi);
         a -> Aggiungi(sw);
-        *n = *n + 1;
         this -> close();
     });
     frameLayout -> addWidget(bottoneAggiungi);

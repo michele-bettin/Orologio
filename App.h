@@ -63,7 +63,7 @@ private:
     PannelloImpostazioni *pImpostazioni;
 
     //Oggetti per la persistenza dei dati
-    ArrayList<SvegliaWidget*> sveglieSalvate;
+    ArrayList<SvegliaWidget*>* sveglieSalvate;
 
     void menu();
     void pannelloSinistro();
