@@ -64,6 +64,3 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     risorse.qrc
-
-DISTFILES += \
-    Salvataggi/Sveglie.json

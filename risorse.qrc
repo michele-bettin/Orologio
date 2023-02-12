@@ -29,5 +29,6 @@
         <file>Risorse/timer-black.png</file>
         <file>Risorse/delete.png</file>
         <file>Risorse/delete-black.png</file>
+        <file>Salvataggi/Sveglie.json</file>
     </qresource>
 </RCC>

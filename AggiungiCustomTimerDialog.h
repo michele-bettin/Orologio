@@ -30,7 +30,7 @@ private:
     QComboBox *secondiInput;
     QPushButton *bottoneAggiungi;
 public:
-    AggiungiCustomTimerDialog(ArrayList<TimerWidget*>* a, int* n, QWidget *parent = 0);
+    AggiungiCustomTimerDialog(ArrayList<TimerWidget*>* a, QWidget *parent = 0);
 };
 
 #endif // AGGIUNGICUSTOMTIMERDIALOG_H

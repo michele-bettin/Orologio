@@ -1,6 +1,6 @@
 #include "AggiungiCustomTimerDialog.h"
 
-AggiungiCustomTimerDialog::AggiungiCustomTimerDialog(ArrayList<TimerWidget*>* a, int* n, QWidget *parent)
+AggiungiCustomTimerDialog::AggiungiCustomTimerDialog(ArrayList<TimerWidget*>* a, QWidget *parent)
     : QDialog(parent)
 {
     this -> setMinimumSize(500, 300);
@@ -58,7 +58,7 @@ AggiungiCustomTimerDialog::AggiungiCustomTimerDialog(ArrayList<TimerWidget*>* a,
     bottoneAggiungi = new QPushButton("Aggiungi timer");
     bottoneAggiungi -> setObjectName("bottone");
     bottoneAggiungi -> setCursor(Qt::PointingHandCursor);
-    connect(bottoneAggiungi, &QPushButton::pressed, [a, n, this]()
+    connect(bottoneAggiungi, &QPushButton::pressed, [a, this]()
     {
         int ore = oreInput -> currentText().toInt();
         int minuti = minutiInput -> currentText().toInt();
@@ -84,7 +84,6 @@ AggiungiCustomTimerDialog::AggiungiCustomTimerDialog(ArrayList<TimerWidget*>* a,
             }
             TimerWidget *tw = new TimerWidget(titoloTimerString, ore, minuti, secondi);
             a -> Aggiungi(tw);
-            *n = *n + 1;
             this -> close();
         }
     });

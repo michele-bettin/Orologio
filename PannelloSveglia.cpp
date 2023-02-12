@@ -85,8 +85,6 @@ PannelloSveglia::PannelloSveglia(Orologio *o, ArrayList<SvegliaWidget*>* a, QWid
     bottoneAggiungi -> setCursor(Qt::PointingHandCursor);
     connect(bottoneAggiungi, &QPushButton::pressed, [a, o, this]()
     {
-
-
         int dimensioneInApertura = a->GetDimensione();
         asd = new AggiungiSvegliaDialog(o, a);
         asd -> setWindowTitle("Orologio - Aggiungi una nuova sveglia");
@@ -98,8 +96,6 @@ PannelloSveglia::PannelloSveglia(Orologio *o, ArrayList<SvegliaWidget*>* a, QWid
         {
             frameSveglieLayout -> addWidget(*a->Get(dimensioneInApertura));
         }
-
-        a->setDimensione(frameSveglieLayout -> count());
 
         //rendo cliccabile il bottone per la cancellazio delle sveglie aggiunte
         if (a->GetDimensione() > 0)
@@ -123,14 +119,12 @@ void PannelloSveglia::inizializzaSveglie(ArrayList<SvegliaWidget*>* a) {
         delete item;
     }
 
-    for (int i = 0; i < a->GetDimensione(); i++) {
+    for (int i = 0; i < a -> GetDimensione(); i++) {
         frameSveglieLayout -> addWidget(*a->Get(i));
     }
 
-    a->setDimensione(frameSveglieLayout -> count());
-
     //rendo cliccabile il bottone per la cancellazio delle sveglie aggiunte
-    if (a->GetDimensione() > 0)
+    if (a -> GetDimensione() > 0)
     {
         bottoneEliminazione -> setDisabled(false);
     }

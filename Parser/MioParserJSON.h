@@ -61,12 +61,12 @@ public:
         file.close();
     }
 
-
+    /*
     void static scriviDaJSONASvegliaWidget(QJsonObject& jsonObject, SvegliaWidget* sveglia, Orologio* oA = 0)
     {
 
     }
-
+    */
 
     // Passo anche l'orologio attuale perchè mi è necessario per creare oggetti di tipo sveglia widget, gli unici
         // realmente per il quale è stato creato il parser

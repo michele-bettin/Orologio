@@ -22,8 +22,6 @@ private:
     QVBoxLayout *frameLayout;
     QLabel *titolo;
 
-    int numeroSveglieEsistenti = 0;
-
     QScrollArea *scrollSveglie;
     QFrame *frameSveglie;
     QHBoxLayout *frameSveglieLayout;

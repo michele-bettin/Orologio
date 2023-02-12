@@ -1,5 +1,9 @@
 #include "App.h"
 #include "InfoDialog.h"
+#include "./Parser/MioParserJSON.h"
+#include <QDir>
+#include <QCoreApplication>
+#include <iostream>
 
 App::App(QWidget *parent)
     : QWidget(parent)
@@ -30,23 +34,16 @@ void App::menu()
     apriActionFileMenu -> setIcon(QIcon(":Risorse/open.png"));
     apriActionFileMenu -> setShortcut(Qt::Key_O | Qt::CTRL);
 
-
-
-
     fileMenu -> addAction(apriActionFileMenu);
     salvaActionFileMenu = new QAction("Salva", fileMenu);
     salvaActionFileMenu -> setIcon(QIcon(":Risorse/save.png"));
     salvaActionFileMenu -> setShortcut(Qt::Key_S | Qt::CTRL);
     connect(salvaActionFileMenu, &QAction::triggered, [this]()
         {
-            int dim = 0;
-            /*while (sveglieSalvate->Get(dim) != nullptr) {
-                dim++;
-            }
-            sveglieSalvate->setDimensione(dim);
-            int a = dim;*/
-            sveglieSalvate->setDimensione(2);
-            MioParserJSON::scriviArraySuFileJson("E:/Michele/Scuola/Università/2°Anno/Programmazione a Oggetti/MyClock/Salvataggi/Sveglie.json", *sveglieSalvate);
+            QDir dir(QCoreApplication::applicationDirPath());
+            QString fileName = dir.filePath("Sveglie.json");
+            std::cout << fileName.toStdString() << std::endl;
+            MioParserJSON::scriviArraySuFileJson(":Salvataggi/Sveglie.json", *sveglieSalvate);
         }
     );
     fileMenu -> addAction(salvaActionFileMenu);
@@ -175,7 +172,8 @@ void App::pannelloDestro()
     //connect(apriActionFileMenu, &QAction::triggered, pSveglia, &PannelloSveglia::signalInizializza);
     connect(apriActionFileMenu, &QAction::triggered, [this]()
         {
-            sveglieSalvate = new ArrayList<SvegliaWidget*>(MioParserJSON::caricaArrayDaFileJson<SvegliaWidget>("E:/Michele/Scuola/Università/2°Anno/Programmazione a Oggetti/MyClock/Salvataggi/Sveglie.json", orologio));
+            const ArrayList<SvegliaWidget*> temp = MioParserJSON::caricaArrayDaFileJson<SvegliaWidget>(":Salvataggi/Sveglie.json", orologio);
+            sveglieSalvate -> Aggiungi(temp);
 
             pSveglia -> inizializzaSveglie(sveglieSalvate);
         }

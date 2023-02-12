@@ -109,15 +109,17 @@ void PannelloTimer::mostraCustomTimer()
 
 void PannelloTimer::aggiungiCustomTimer()
 {
-    actd = new AggiungiCustomTimerDialog(&collezioneCustomTimer, &numeroTimerEsistenti);
+    int dimensioneInApertura = collezioneCustomTimer.GetDimensione();
+
+    actd = new AggiungiCustomTimerDialog(&collezioneCustomTimer);
     actd -> setWindowTitle("Orologio - Aggiungi un nuovo timer");
     actd -> setModal(true);
     actd -> exec();
 
     //aggiungo il nuovo timer creato
-    if (numeroTimerEsistenti <= collezioneCustomTimer.GetDimensione())
+    if (dimensioneInApertura < collezioneCustomTimer.GetDimensione())
     {
-        frameCustomTimerLayout -> addWidget(*collezioneCustomTimer.Get(numeroTimerEsistenti - 1));
+        frameCustomTimerLayout -> addWidget(*collezioneCustomTimer.Get(dimensioneInApertura));
     }
 
     //rendo cliccabile il bottone per la cancellazione dei timer aggiunti
@@ -129,7 +131,6 @@ void PannelloTimer::aggiungiCustomTimer()
 
 void PannelloTimer::eliminazioneCustomTimer()
 {
-    numeroTimerEsistenti = 0;
     bottoneEliminazione -> setDisabled(true);
 
     //rimozione TimerWidget dal layout

@@ -29,7 +29,6 @@ private:
     void mostraStandardTimer();
 
     ArrayList<TimerWidget*> collezioneCustomTimer;
-    int numeroTimerEsistenti = 0;
 
     QScrollArea *scrollCustomTimer;
     QFrame *frameCustomTimer;

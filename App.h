@@ -19,7 +19,6 @@
 #include "PannelloImpostazioni.h"
 #include "./Collezioni/ArrayList.h"
 #include "SvegliaWidget.h"
-#include "./Parser/MioParserJSON.h"
 
 class App : public QWidget
 {

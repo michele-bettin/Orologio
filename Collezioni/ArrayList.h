@@ -21,7 +21,7 @@ class ArrayList {
         void Aggiungi(T& elemento);
         void Aggiungi(const T & elemento, int indice);
         void Aggiungi(const ArrayList<T> & lista, int indice);
-        void Aggiungi(ArrayList<T> & lista);
+        void Aggiungi(const ArrayList<T> & lista);
         const T * Rimuovi(int indice);
         void RimuoviTutti();
         bool Sposta(int indice1, int indice2);
@@ -30,8 +30,6 @@ class ArrayList {
         int GetDimensione() const;
         int GetCapacita() const;
         std::string toString() const;
-
-        void setDimensione(int dimensione);
 
     private:
         // L'Array che c'è alla base del nostro ArrayList.
@@ -256,21 +254,26 @@ void ArrayList<T>::Aggiungi(const T& elemento, int indice) {
 }
 
 /**
- * Aggiunge un ArrayList<T> alla fine di questo ArrayList.
  *
- * Viene eseguito in tempo O(n), dove n = la dimensione dell'elenco passato.
+ *  Metodo aggiungi personalizzato
  *
- * @param lista l'ArrayList<T> da aggiungere a questo.
+ *
+ *
 */
 template<class T>
-void ArrayList<T>::Aggiungi(ArrayList<T> & lista)
+void ArrayList<T>::Aggiungi(const ArrayList<T> & lista)
 {
+    delete [] Array;
+    Array = new T[lista.Capacita * 2];
+
+    Dimensione = 0;
 
     for (int i = 0; i < lista.GetDimensione(); i++)
     {
-
-        add(lista.Get(i));
+        Array[i] = *lista.Get(i);
     }
+
+    Dimensione = lista.GetDimensione();
 }
 
 /**
@@ -477,11 +480,6 @@ std::string ArrayList<T>::toString() const
     std::string returnString = streamOut.str();
 
     return returnString;
-}
-
-template<class T>
-void ArrayList<T>::setDimensione(int dimensione) {
-    Dimensione = dimensione;
 }
 
 #endif /* ARRAYLIST_H_ */
