@@ -1,9 +1,6 @@
 #include "App.h"
 #include "InfoDialog.h"
 #include "./Parser/MioParserJSON.h"
-#include <QDir>
-#include <QCoreApplication>
-#include <iostream>
 
 App::App(QWidget *parent)
     : QWidget(parent)
@@ -40,10 +37,7 @@ void App::menu()
     salvaActionFileMenu -> setShortcut(Qt::Key_S | Qt::CTRL);
     connect(salvaActionFileMenu, &QAction::triggered, [this]()
         {
-            QDir dir(QCoreApplication::applicationDirPath());
-            QString fileName = dir.filePath("Sveglie.json");
-            std::cout << fileName.toStdString() << std::endl;
-            MioParserJSON::scriviArraySuFileJson(":Salvataggi/Sveglie.json", *sveglieSalvate);
+            MioParserJSON::scriviArraySuFileJson("./Salvataggi/Sveglie.json", *sveglieSalvate);
         }
     );
     fileMenu -> addAction(salvaActionFileMenu);
@@ -172,7 +166,7 @@ void App::pannelloDestro()
     //connect(apriActionFileMenu, &QAction::triggered, pSveglia, &PannelloSveglia::signalInizializza);
     connect(apriActionFileMenu, &QAction::triggered, [this]()
         {
-            const ArrayList<SvegliaWidget*> temp = MioParserJSON::caricaArrayDaFileJson<SvegliaWidget>(":Salvataggi/Sveglie.json", orologio);
+            const ArrayList<SvegliaWidget*> temp = MioParserJSON::caricaArrayDaFileJson<SvegliaWidget>("./Salvataggi/Sveglie.json", orologio);
             sveglieSalvate -> Aggiungi(temp);
 
             pSveglia -> inizializzaSveglie(sveglieSalvate);
