@@ -175,7 +175,7 @@ void App::pannelloDestro()
     //connect(apriActionFileMenu, &QAction::triggered, pSveglia, &PannelloSveglia::signalInizializza);
     connect(apriActionFileMenu, &QAction::triggered, [this]()
         {
-            sveglieSalvate->Aggiungi(MioParserJSON::caricaArrayDaFileJson<SvegliaWidget>("E:/Michele/Scuola/Università/2°Anno/Programmazione a Oggetti/MyClock/Salvataggi/Sveglie.json", orologio));
+            sveglieSalvate = new ArrayList<SvegliaWidget*>(MioParserJSON::caricaArrayDaFileJson<SvegliaWidget>("E:/Michele/Scuola/Università/2°Anno/Programmazione a Oggetti/MyClock/Salvataggi/Sveglie.json", orologio));
 
             pSveglia -> inizializzaSveglie(sveglieSalvate);
         }
